@@ -46,6 +46,11 @@ namespace InventOn.BusinessLogicLayer
             _dataSourceConnection.InsertItem(bookSender.Map(book, new Book()));
         }
 
+        public void AddBooks(List<BusinessBook> books)
+        {
+            _dataSourceConnection.InsertItems(bookSender.Map(books, new List<Book>()));
+        }
+
         public void RemoveBook(BusinessBook book)
         {
             _dataSourceConnection.DeleteItem(bookSender.Map(book, new Book()));

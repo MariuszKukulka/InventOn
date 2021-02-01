@@ -8,6 +8,8 @@ namespace InventOn.BusinessLogicLayer
         List<BusinessBook> GetAllBooks();
         BusinessBook GetBookById(int id);
         void AddBook(BusinessBook book);
+        void AddBooks(List<BusinessBook> books);
         void RemoveBook(BusinessBook book);
+        void UpdateBook(BusinessBook book);
     }
 }

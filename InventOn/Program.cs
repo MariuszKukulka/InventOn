@@ -1,8 +1,10 @@
 ﻿using InventOn.BusinessLogicLayer;
+using InventOn.BusinessLogicLayer.BusinessModels;
 using InventOn.DataSourceLayer;
 using InventOn.PresentationLayer;
 using Microsoft.Practices.Unity.Configuration;
 using System;
+using System.Collections.Generic;
 using System.Configuration;
 using Unity;
 
@@ -36,6 +38,17 @@ namespace InventOn
 
             var booksFile = program2.Business.GetAllBooks();
             program2.Presentation.Print(string.Join("\n", booksFile));
+
+            program2.Business.AddBook(new BusinessBook() { Id = 6, Name = "Test add book" });
+
+            var booksToAdd = new List<BusinessBook>()
+            {
+                new BusinessBook(){ Id = 7, Name = "AddedFirst" },
+                new BusinessBook(){ Id = 8},
+            };
+
+            program2.Business.AddBooks(booksToAdd);
+            program2.Presentation.Print(string.Join("\n", program2.Business.GetAllBooks()));
 
             Console.ReadKey();
         }

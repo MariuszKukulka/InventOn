@@ -8,6 +8,7 @@ namespace InventOn.DataSourceLayer
         List<Book> GetAllItems();
         Book GetItemById(int id);
         void InsertItem(Book item);
+        void InsertItems(List<Book> items);
         void DeleteItem(Book item);
         void DeleteItemById(int id);
         void UpdateItem(Book item);

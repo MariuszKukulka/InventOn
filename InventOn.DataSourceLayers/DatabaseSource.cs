@@ -1,4 +1,5 @@
 ﻿using InventOn.DataSourceLayer.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -26,6 +27,25 @@ namespace InventOn.DataSourceLayer
         public void InsertItem(Book item)
         {
             _elements.Add(item);
+        }
+
+        public void InsertItems(List<Book> items)
+        {
+            var expectedCount = _elements.Count + items.Count;
+            var books = new List<Book>(_elements);
+            try
+            {
+                books.AddRange(items);
+                if (expectedCount == books.Count)
+                {
+                    _elements = books;
+                }
+                else throw new Exception(String.Empty);
+            }
+            catch (Exception)
+            {
+                Console.WriteLine($"Couldn't add all books.");
+            }
         }
 
         public void DeleteItem(Book item)
